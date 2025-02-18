@@ -24,7 +24,7 @@
   services.xserver = {
     enable = true;
     xkb = {
-      layout = "es";
+      layout = "latam";
       variant = "";
       options = "caps:escape";
     };

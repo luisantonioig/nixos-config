@@ -348,7 +348,7 @@ in
        }
 
        input {
-         kb_layout = es
+         kb_layout = latam 
          kb_options = caps:escape
          repeat_delay = 350
          repeat_rate = 50
