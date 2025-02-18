@@ -37,7 +37,6 @@
     brave
     qutebrowser
     git
-    syncthing
 
     # Office
     nextcloud-client
@@ -108,80 +107,80 @@
       '';
     })
 
-    # Media
-    gimp
-    krita
-    pinta
-    inkscape
-    (pkgs-stable.lollypop.override { youtubeSupport = false; })
-    vlc
-    mpv
-    yt-dlp
-    blender-hip
-    libresprite
-    (pkgs.appimageTools.wrapType2 {
-      name = "Cura";
-      src = fetchurl {
-        url = "https://github.com/Ultimaker/Cura/releases/download/5.8.1/UltiMaker-Cura-5.8.1-linux-X64.AppImage";
-        hash = "sha256-VLd+V00LhRZYplZbKkEp4DXsqAhA9WLQhF933QAZRX0=";
-      };
-      extraPkgs = pkgs: with pkgs; [];
-     })
-    #(pkgs-stable.cura.overrideAttrs (oldAttrs: {
-    #  postInstall = oldAttrs.postInstall + ''cp -rf ${(pkgs.makeDesktopItem {
-    #      name = "com.ultimaker.cura";
-    #      icon = "cura-icon";
-    #      desktopName = "Cura";
-    #      exec = "env QT_QPA_PLATFORM=xcb ${pkgs-stable.cura}/bin/cura %F";
-    #      tryExec = "env QT_QPA_PLATFORM=xcb ${pkgs-stable.cura}/bin/cura";
-    #      terminal = false;
-    #      type = "Application";
-    #      categories = ["Graphics"];
-    #      mimeTypes = ["model/stl" "application/vnd.ms-3mfdocument" "application/prs.wavefront-obj"
-    #                   "image/bmp" "image/gif" "image/jpeg" "image/png" "text/x-gcode" "application/x-amf"
-    #                   "application/x-ply" "application/x-ctm" "model/vnd.collada+xml" "model/gltf-binary"
-    #                   "model/gltf+json" "model/vnd.collada+xml+zip"];
-    #      })}/share/applications $out/share'';
-    #}))
-    #(pkgs.writeShellScriptBin "curax" ''env QT_QPA_PLATFORM=xcb ${pkgs-stable.cura}/bin/cura $@'')
-    (pkgs-stable.curaengine_stable)
-    openscad
-    (stdenv.mkDerivation {
-      name = "cura-slicer";
-      version = "0.0.7";
-      src = fetchFromGitHub {
-        owner = "Spiritdude";
-        repo = "Cura-CLI-Wrapper";
-        rev = "ff076db33cfefb770e1824461a6336288f9459c7";
-        sha256 = "sha256-BkvdlqUqoTYEJpCCT3Utq+ZBU7g45JZFJjGhFEXPXi4=";
-      };
-      phases = "installPhase";
-      installPhase = ''
-        mkdir -p $out $out/bin $out/share $out/share/cura-slicer
-        cp $src/cura-slicer $out/bin
-        cp $src/settings/fdmprinter.def.json $out/share/cura-slicer
-        cp $src/settings/base.ini $out/share/cura-slicer
-        sed -i 's+#!/usr/bin/perl+#! /usr/bin/env nix-shell\n#! nix-shell -i perl -p perl538 perl538Packages.JSON+g' $out/bin/cura-slicer
-        sed -i 's+/usr/share+/home/${userSettings.username}/.nix-profile/share+g' $out/bin/cura-slicer
-      '';
-      propagatedBuildInputs = with pkgs-stable; [
-        curaengine_stable
-      ];
-    })
-    obs-studio
-    ffmpeg
-    (pkgs.writeScriptBin "kdenlive-accel" ''
-      #!/bin/sh
-      DRI_PRIME=0 kdenlive "$1"
-    '')
-    movit
-    mediainfo
-    libmediainfo
-    audio-recorder
-    gnome.cheese
-    ardour
-    rosegarden
-    tenacity
+    ##  Media
+    # gimp
+    # krita
+    # pinta
+    # inkscape
+    # (pkgs-stable.lollypop.override { youtubeSupport = false; })
+    # vlc
+    # mpv
+    # yt-dlp
+    # blender-hip
+    # libresprite
+    # (pkgs.appimageTools.wrapType2 {
+    #   name = "Cura";
+    #   src = fetchurl {
+    #     url = "https://github.com/Ultimaker/Cura/releases/download/5.8.1/UltiMaker-Cura-5.8.1-linux-X64.AppImage";
+    #     hash = "sha256-VLd+V00LhRZYplZbKkEp4DXsqAhA9WLQhF933QAZRX0=";
+    #   };
+    #   extraPkgs = pkgs: with pkgs; [];
+    #  })
+    # #(pkgs-stable.cura.overrideAttrs (oldAttrs: {
+    # #  postInstall = oldAttrs.postInstall + ''cp -rf ${(pkgs.makeDesktopItem {
+    # #      name = "com.ultimaker.cura";
+    # #      icon = "cura-icon";
+    # #      desktopName = "Cura";
+    # #      exec = "env QT_QPA_PLATFORM=xcb ${pkgs-stable.cura}/bin/cura %F";
+    # #      tryExec = "env QT_QPA_PLATFORM=xcb ${pkgs-stable.cura}/bin/cura";
+    # #      terminal = false;
+    # #      type = "Application";
+    # #      categories = ["Graphics"];
+    # #      mimeTypes = ["model/stl" "application/vnd.ms-3mfdocument" "application/prs.wavefront-obj"
+    # #                   "image/bmp" "image/gif" "image/jpeg" "image/png" "text/x-gcode" "application/x-amf"
+    # #                   "application/x-ply" "application/x-ctm" "model/vnd.collada+xml" "model/gltf-binary"
+    # #                   "model/gltf+json" "model/vnd.collada+xml+zip"];
+    # #      })}/share/applications $out/share'';
+    # #}))
+    # #(pkgs.writeShellScriptBin "curax" ''env QT_QPA_PLATFORM=xcb ${pkgs-stable.cura}/bin/cura $@'')
+    # (pkgs-stable.curaengine_stable)
+    # openscad
+    # (stdenv.mkDerivation {
+    #   name = "cura-slicer";
+    #   version = "0.0.7";
+    #   src = fetchFromGitHub {
+    #     owner = "Spiritdude";
+    #     repo = "Cura-CLI-Wrapper";
+    #     rev = "ff076db33cfefb770e1824461a6336288f9459c7";
+    #     sha256 = "sha256-BkvdlqUqoTYEJpCCT3Utq+ZBU7g45JZFJjGhFEXPXi4=";
+    #   };
+    #   phases = "installPhase";
+    #   installPhase = ''
+    #     mkdir -p $out $out/bin $out/share $out/share/cura-slicer
+    #     cp $src/cura-slicer $out/bin
+    #     cp $src/settings/fdmprinter.def.json $out/share/cura-slicer
+    #     cp $src/settings/base.ini $out/share/cura-slicer
+    #     sed -i 's+#!/usr/bin/perl+#! /usr/bin/env nix-shell\n#! nix-shell -i perl -p perl538 perl538Packages.JSON+g' $out/bin/cura-slicer
+    #     sed -i 's+/usr/share+/home/${userSettings.username}/.nix-profile/share+g' $out/bin/cura-slicer
+    #   '';
+    #   propagatedBuildInputs = with pkgs-stable; [
+    #     curaengine_stable
+    #   ];
+    # })
+    # obs-studio
+    # ffmpeg
+    # (pkgs.writeScriptBin "kdenlive-accel" ''
+    #   #!/bin/sh
+    #   DRI_PRIME=0 kdenlive "$1"
+    # '')
+    # movit
+    # mediainfo
+    # libmediainfo
+    # audio-recorder
+    # gnome.cheese
+    # ardour
+    # rosegarden
+    # tenacity
 
     # Various dev packages
     remmina
@@ -198,12 +197,6 @@
       template = builtins.readFile ../../user/pkgs/nixos-snowflake-stylix.svg.mustache;
       extension = "svg";
     };
-
-  services.syncthing.enable = true;
-  services.nextcloud-client = {
-    enable = true;
-    startInBackground = true;
-  };
 
   xdg.enable = true;
   xdg.userDirs = {
