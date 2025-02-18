@@ -32,6 +32,7 @@
 
   home.packages = (with pkgs; [
     # Core
+    google-chrome
     zsh
     alacritty
     brave
