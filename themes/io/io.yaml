@@ -1,18 +1,19 @@
 scheme: "Io"
 author: "LibrePhoenix (forked from Fernando Marques (https://github.com/RakkiUwU) and Gabriel Fontes (https://github.com/Misterio77))"
-base00: "1a181a"
-base01: "262326"
-base02: "302c30"
-base03: "373238"
-base04: "463f47"
-base05: "bfaab7"
-base06: "dbd7da"
-base07: "faf7f9"
-base08: "de5b44"
-base09: "e39755"
-base0A: "a84a73"
-base0B: "c965bf"
-base0C: "9c5fce"
-base0D: "0e85b9"
-base0E: "6ac38f"
-base0F: "a3ab5a"
+
+base00: "1E1E1E"  # Fondo principal
+base01: "262626"  # Fondo alternativo
+base02: "3A3A3A"  # Resaltado de región
+base03: "7F7F7F"  # Comentarios
+base04: "99CC99"  # Variables
+base05: "DCDCCC"  # Texto principal
+base06: "FFCC66"  # Tipos
+base07: "FFFFFF"  # Texto brillante
+base08: "F2777A"  # Palabras clave
+base09: "F99157"  # Números y constantes
+base0A: "FFCC66"  # Strings y literales
+base0B: "99CC99"  # Funciones
+base0C: "66CCCC"  # Constantes
+base0D: "6699CC"  # Clases y nombres de métodos
+base0E: "CC99CC"  # Métodos y operadores
+base0F: "7F7F7F"  # Variables atenuadas
