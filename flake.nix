@@ -34,7 +34,7 @@
         font = "Intel One Mono"; # Selected font
 
         # fontPkg = pkgs.ibm-flex; # Font package
-        fontPkg = pkgs.intel-one-mono
+        fontPkg = pkgs.intel-one-mono;
         editor = "neovide"; # Default editor;
         # editor spawning translator
         # generates a command that can be used to spawn editor inside a gui
