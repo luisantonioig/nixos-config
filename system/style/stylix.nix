@@ -6,7 +6,7 @@ let
   myLightDMTheme = if themePolarity == "light" then "Adwaita" else "Adwaita-dark";
   backgroundUrl = builtins.readFile (./. + "../../../themes"+("/"+userSettings.theme)+"/backgroundurl.txt");
   backgroundSha256 = builtins.readFile (./. + "../../../themes/"+("/"+userSettings.theme)+"/backgroundsha256.txt");
-  myWallpaper = mlDerivation {
+  myWallpaper = mkDerivation {
     name = "my-wallpaper";
     src = ./background/jaguar_wallpaper.jpg;
     installPhase = ''
