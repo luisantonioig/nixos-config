@@ -383,7 +383,6 @@ in
   shadow_range = 30  # Alcance de la sombra
   shadow_render_power = 3  # Suavidad de la sombra
   shadow_offset = 5 5  # Desplazamiento de la sombra
-  shadow_color = rgba(0, 0, 0, 0.6)  # Color sutil de sombra
 } 
 
     '';
