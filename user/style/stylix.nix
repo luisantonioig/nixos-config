@@ -1,10 +1,10 @@
 { config, lib, pkgs, inputs, userSettings, ... }:
 
 let
-  themePath = "../../../themes"+("/"+userSettings.theme+"/"+userSettings.theme)+".yaml";
-  themePolarity = lib.removeSuffix "\n" (builtins.readFile (./. + "../../../themes"+("/"+userSettings.theme)+"/polarity.txt"));
-  backgroundUrl = builtins.readFile (./. + "../../../themes"+("/"+userSettings.theme)+"/backgroundurl.txt");
-  backgroundSha256 = builtins.readFile (./. + "../../../themes/"+("/"+userSettings.theme)+"/backgroundsha256.txt");
+themePath = "../../../themes"+("/"+userSettings.theme+"/"+userSettings.theme)+".yaml";
+themePolarity = lib.removeSuffix "\n" (builtins.readFile (./. + "../../../themes"+("/"+userSettings.theme)+"/polarity.txt"));
+backgroundUrl = builtins.readFile (./. + "../../../themes"+("/"+userSettings.theme)+"/backgroundurl.txt");
+backgroundSha256 = builtins.readFile (./. + "../../../themes/"+("/"+userSettings.theme)+"/backgroundsha256.txt");
 in
 {
 
@@ -47,42 +47,43 @@ in
   stylix.targets.alacritty.enable = false;
   programs.alacritty.settings = {
     colors = {
-    primary = {
-      background = "#1E1E1E";  # Fondo principal oscuro
-      foreground = "#DCDCCC";  # Texto principal claro
-    };
-    cursor = {
-      text = "#1E1E1E";    # Color del cursor (fondo del texto del cursor)
-      cursor = "#FFCC66";  # Color del cursor
-    };
-    normal = {
-      black = "#1E1E1E";   # Negro (fondo)
-      red = "#F2777A";     # Rojo (palabras clave)
-      green = "#99CC99";   # Verde (strings)
-      yellow = "#FFCC66";  # Amarillo (tipos)
-      blue = "#6699CC";    # Azul (funciones)
-      magenta = "#CC99CC"; # Magenta (built-ins)
-      cyan = "#66CCCC";    # Cyan (constantes)
-      white = "#DCDCCC";   # Blanco (texto general)
-    };
-    bright = {
-      black = "#262626";   # Negro brillante (fondo alternativo)
-      red = "#F99157";     # Rojo brillante
-      green = "#A6E22E";   # Verde brillante
-      yellow = "#FFD700";  # Amarillo brillante
-      blue = "#81A2BE";    # Azul brillante
-      magenta = "#B294BB"; # Magenta brillante
-      cyan = "#8ABEB7";    # Cyan brillante
-      white = "#F8F8F2";   # Blanco brillante
-    };
-  };  
+      primary = {
+        background = "#1E1E1E";  # Fondo principal oscuro
+          foreground = "#DCDCCC";  # Texto principal claro
+      };
+      cursor = {
+        text = "#1E1E1E";    # Color del cursor (fondo del texto del cursor)
+          cursor = "#FFCC66";  # Color del cursor
+      };
+      normal = {
+        black = "#1E1E1E";   # Negro (fondo)
+          red = "#F2777A";     # Rojo (palabras clave)
+          green = "#99CC99";   # Verde (strings)
+          yellow = "#FFCC66";  # Amarillo (tipos)
+          blue = "#6699CC";    # Azul (funciones)
+          magenta = "#CC99CC"; # Magenta (built-ins)
+          cyan = "#66CCCC";    # Cyan (constantes)
+          white = "#DCDCCC";   # Blanco (texto general)
+      };
+      bright = {
+        black = "#262626";   # Negro brillante (fondo alternativo)
+          red = "#F99157";     # Rojo brillante
+          green = "#A6E22E";   # Verde brillante
+          yellow = "#FFD700";  # Amarillo brillante
+          blue = "#81A2BE";    # Azul brillante
+          magenta = "#B294BB"; # Magenta brillante
+          cyan = "#8ABEB7";    # Cyan brillante
+          white = "#F8F8F2";   # Blanco brillante
+      };
+    };  
+  };
   stylix.targets.kitty.enable = true;
   stylix.targets.gtk.enable = true;
   stylix.targets.rofi.enable = if (userSettings.wmType == "x11") then true else false;
   stylix.targets.feh.enable = if (userSettings.wmType == "x11") then true else false;
   programs.feh.enable = true;
   home.file.".fehbg-stylix".text = ''
-    #!/bin/sh
+#!/bin/sh
     feh --no-fehbg --bg-fill ''+config.stylix.image+'';
   '';
   home.file.".fehbg-stylix".executable = true;
@@ -106,9 +107,9 @@ in
 
     wallpaper = ,''+config.stylix.image+''
 
-  '';
+    '';
   home.packages = with pkgs; [
-     libsForQt5.qt5ct pkgs.libsForQt5.breeze-qt5 libsForQt5.breeze-icons pkgs.noto-fonts-monochrome-emoji
+    libsForQt5.qt5ct pkgs.libsForQt5.breeze-qt5 libsForQt5.breeze-icons pkgs.noto-fonts-monochrome-emoji
   ];
   qt = {
     enable = true;
