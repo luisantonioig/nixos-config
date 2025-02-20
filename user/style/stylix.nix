@@ -43,39 +43,45 @@ in
       desktop = 12;
     };
   };
-
   stylix.targets.alacritty.enable = false;
-  programs.alacritty.settings = {
-    colors = {
-      primary = {
-        background = "#1E1E1E";  # Fondo principal oscuro
-          foreground = "#DCDCCC";  # Texto principal claro
+  programs.alacritty = {
+    enable = true;
+    settings = {
+      colors = {
+        primary = {
+          background = "#1E1E1E";
+          foreground = "#DCDCCC";
+        };
+        cursor = {
+          text = "#1E1E1E";
+          cursor = "#FFCC66";
+        };
+        selection = {
+          text = "#DCDCCC";
+          background = "#3A3A3A";
+        };
+        normal = {
+          black   = "#262626";
+          red     = "#F2777A";
+          green   = "#99CC99";
+          yellow  = "#FFCC66";
+          blue    = "#6699CC";
+          magenta = "#CC99CC";
+          cyan    = "#66CCCC";
+          white   = "#DCDCCC";
+        };
+        bright = {
+          black   = "#3A3A3A";
+          red     = "#F99157";
+          green   = "#A3BE8C";
+          yellow  = "#EBCB8B";
+          blue    = "#81A1C1";
+          magenta = "#B48EAD";
+          cyan    = "#8FBCBB";
+          white   = "#ECEFF4";
+        };
       };
-      cursor = {
-        text = "#1E1E1E";    # Color del cursor (fondo del texto del cursor)
-          cursor = "#FFCC66";  # Color del cursor
-      };
-      normal = {
-        black = "#1E1E1E";   # Negro (fondo)
-          red = "#F2777A";     # Rojo (palabras clave)
-          green = "#99CC99";   # Verde (strings)
-          yellow = "#FFCC66";  # Amarillo (tipos)
-          blue = "#6699CC";    # Azul (funciones)
-          magenta = "#CC99CC"; # Magenta (built-ins)
-          cyan = "#66CCCC";    # Cyan (constantes)
-          white = "#DCDCCC";   # Blanco (texto general)
-      };
-      bright = {
-        black = "#262626";   # Negro brillante (fondo alternativo)
-          red = "#F99157";     # Rojo brillante
-          green = "#A6E22E";   # Verde brillante
-          yellow = "#FFD700";  # Amarillo brillante
-          blue = "#81A2BE";    # Azul brillante
-          magenta = "#B294BB"; # Magenta brillante
-          cyan = "#8ABEB7";    # Cyan brillante
-          white = "#F8F8F2";   # Blanco brillante
-      };
-    };  
+    };
   };
   stylix.targets.kitty.enable = true;
   stylix.targets.gtk.enable = true;
