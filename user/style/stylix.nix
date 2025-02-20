@@ -46,21 +46,6 @@ in
 
   stylix.targets.alacritty.enable = false;
   programs.alacritty.settings = {
-    font = {
-      normal = {
-        family = "IBM Plex";
-        style = "Mono";
-      };
-      bold = {
-        family = "IBM Plex";
-        style = "Bold";
-      };
-      italic = {
-        family = "IBM Plex";
-        style = "Italic";
-      };
-      size = 12;
-    };
     colors = {
       primary = {
         background = "#1E1E1E";  # Fondo principal oscuro
