@@ -82,7 +82,7 @@ in
       general {
         layout = master
         border_size = 5
-        col.active_border = 0xff'' + config.lib.stylix.colors.base08 +''
+        col.active_border =0xff'' + config.lib.stylix.colors.base08 + " " + ''0xff'' + config.lib.stylix.colors.base08 + " " + ''0xff'' + config.lib.stylix.colors.base08 + " " + ''0xff'' + config.lib.stylix.colors.base08 + " " + ''0xff'' + config.lib.stylix.colors.base08 + " " + ''0xff'' + config.lib.stylix.colors.base08 + " " + ''0xff'' + config.lib.stylix.colors.base08 + " " + ''0xff'' + config.lib.stylix.colors.base08 + " " + ''270deg
         col.inactive_border = 0xaa'' + config.lib.stylix.colors.base02 + ''
 
             resize_on_border = true
