@@ -49,7 +49,7 @@ in
     font = {
       normal = {
         family = "IBM Plex";
-        style = "Regular";
+        style = "Mono";
       };
       bold = {
         family = "IBM Plex";
