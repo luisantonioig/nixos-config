@@ -366,8 +366,11 @@ in
 
        }
        decoration {
-         active_border_color = rgb(88C0D0)
-         inactive_border_color = rgb(4C566A)
+        rounding = 12
+        drop_shadow = true
+        shadow_range = 30
+        shadow_render_power = 3
+        shadow_offset = 5 5
        }
      
     '';
