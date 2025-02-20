@@ -365,26 +365,11 @@ in
          font_family = '' + userSettings.font + ''
 
        }
-     decoration {
-  rounding = 12  # Bordes más redondeados para un look moderno
-  blur {
-    enabled = true
-    size = 8  # Aumenta el desenfoque para un efecto más suave
-    passes = 3  # Más pases para un blur más refinado
-    ignore_opacity = false
-    contrast = 1.1
-    brightness = 0.9
-    xray = true
-    special = true
-    popups = true
-  }
-
-  drop_shadow = true  # Sombras elegantes para profundidad
-  shadow_range = 30  # Alcance de la sombra
-  shadow_render_power = 3  # Suavidad de la sombra
-  shadow_offset = 5 5  # Desplazamiento de la sombra
-} 
-
+       decoration {
+         active_border_color = rgb(88C0D0)
+         inactive_border_color = rgb(4C566A)
+       }
+     
     '';
     xwayland = { enable = true; };
     systemd.enable = true;
