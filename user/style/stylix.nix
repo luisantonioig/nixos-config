@@ -5,6 +5,14 @@ themePath = "../../../themes"+("/"+userSettings.theme+"/"+userSettings.theme)+".
 themePolarity = lib.removeSuffix "\n" (builtins.readFile (./. + "../../../themes"+("/"+userSettings.theme)+"/polarity.txt"));
 backgroundUrl = builtins.readFile (./. + "../../../themes"+("/"+userSettings.theme)+"/backgroundurl.txt");
 backgroundSha256 = builtins.readFile (./. + "../../../themes/"+("/"+userSettings.theme)+"/backgroundsha256.txt");
+myWallpaper = pkgs.stdenv.mkDerivation {
+  name = "my-wallpaper";
+  src = ./background/jaguar_wallpaper.jpg;
+  installPhase = ''
+    mkdir -p $out
+    cp $src $out/fondo.jpg
+  '';
+};
 in
 {
 
@@ -13,10 +21,7 @@ in
   home.file.".currenttheme".text = userSettings.theme;
   stylix.autoEnable = false;
   stylix.polarity = themePolarity;
-  stylix.image = pkgs.fetchurl {
-    url = backgroundUrl;
-    sha256 = backgroundSha256;
-  };
+  stylix.image = "${myWallpaper}/fondo.jpg"; 
   stylix.base16Scheme = ./. + themePath;
 
   stylix.fonts = {
