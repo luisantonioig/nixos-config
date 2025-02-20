@@ -365,22 +365,26 @@ in
          font_family = '' + userSettings.font + ''
 
        }
-       decoration {
-         rounding = 8
-         dim_special = 0.0
-         blur {
-           enabled = true
-           size = 5
-           passes = 2
-           ignore_opacity = true
-           contrast = 1.17
-           brightness = '' + (if (config.stylix.polarity == "dark") then "0.8" else "1.25") + ''
+     decoration {
+  rounding = 12  # Bordes más redondeados para un look moderno
+  blur {
+    enabled = true
+    size = 8  # Aumenta el desenfoque para un efecto más suave
+    passes = 3  # Más pases para un blur más refinado
+    ignore_opacity = false
+    contrast = 1.1
+    brightness = 0.9
+    xray = true
+    special = true
+    popups = true
+  }
 
-           xray = true
-           special = true
-           popups = true
-         }
-       }
+  drop_shadow = true  # Sombras elegantes para profundidad
+  shadow_range = 30  # Alcance de la sombra
+  shadow_render_power = 3  # Suavidad de la sombra
+  shadow_offset = 5 5  # Desplazamiento de la sombra
+  shadow_color = rgba(0, 0, 0, 0.6)  # Color sutil de sombra
+} 
 
     '';
     xwayland = { enable = true; };
