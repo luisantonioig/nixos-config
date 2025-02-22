@@ -1,4 +1,4 @@
-{ lib, pkgs, inputs, userSettings, ... }:
+{mkDerivation, lib, pkgs, inputs, userSettings, ... }:
 
 let
   themePath = "../../../themes/"+userSettings.theme+"/"+userSettings.theme+".yaml";
@@ -6,9 +6,10 @@ let
   myLightDMTheme = if themePolarity == "light" then "Adwaita" else "Adwaita-dark";
   backgroundUrl = builtins.readFile (./. + "../../../themes"+("/"+userSettings.theme)+"/backgroundurl.txt");
   backgroundSha256 = builtins.readFile (./. + "../../../themes/"+("/"+userSettings.theme)+"/backgroundsha256.txt");
-  myWallpaper = mkDerivation {
+  myWallpaper = pkgs.stdenv.mkDerivation {
     name = "my-wallpaper";
-    src = ./background/jaguar_wallpaper.jpg;
+    src = ../../background/jaguar_wallpaper.jpg;
+    dontUnpack = true;
     installPhase = ''
       mkdir -p $out
       cp $src $out/fondo.jpg

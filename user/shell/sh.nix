@@ -3,7 +3,7 @@ let
 
   # My shell aliases
   myAliases = {
-    ls = "eza --icons -l -T -L=1";
+    ls = "eza --icons --group-directories-first --git -l --color=never";
     cat = "bat";
     htop = "btm";
     fd = "fd -Lu";
@@ -22,13 +22,16 @@ in
     enableCompletion = true;
     shellAliases = myAliases;
     initExtra = ''
-    PROMPT=" ◉ %U%F{magenta}%n%f%u@%U%F{blue}%m%f%u:%F{yellow}%~%f
-     %F{green}→%f "
-    RPROMPT="%F{red}▂%f%F{yellow}▄%f%F{green}▆%f%F{cyan}█%f%F{blue}▆%f%F{magenta}▄%f%F{white}▂%f"
-    [ $TERM = "dumb" ] && unsetopt zle && PS1='$ '
-    bindkey '^P' history-beginning-search-backward
-    bindkey '^N' history-beginning-search-forward
-    '';
+      PROMPT="%F{cyan}╭─%F{magenta}%n%f@%F{blue}%m%f %F{yellow}%~%f
+      %F{cyan}╰─%F{green}❯%f "
+
+      RPROMPT="%F{red}▂%f%F{yellow}▄%f%F{green}▆%f%F{cyan}█%f%F{blue}▆%f%F{magenta}▄%f%F{white}▂%f"
+
+      [ $TERM = "dumb" ] && unsetopt zle && PS1='$ '
+
+      bindkey '^P' history-beginning-search-backward
+      bindkey '^N' history-beginning-search-forward
+    '';  
   };
 
   programs.bash = {
@@ -38,6 +41,7 @@ in
   };
 
   home.packages = with pkgs; [
+    vivid
     disfetch lolcat cowsay onefetch
     gnugrep gnused
     bat eza bottom fd bc

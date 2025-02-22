@@ -29,7 +29,6 @@ in
     settings = { };
     extraConfig = ''
       exec-once = dbus-update-activation-environment --systemd DISPLAY XAUTHORITY WAYLAND_DISPLAY XDG_SESSION_DESKTOP=Hyprland XDG_CURRENT_DESKTOP=Hyprland XDG_SESSION_TYPE=wayland
-      exec-once = hyprctl setcursor '' + config.gtk.cursorTheme.name + " " + builtins.toString config.gtk.cursorTheme.size + ''
 
       env = XDG_CURRENT_DESKTOP,Hyprland
       env = XDG_SESSION_DESKTOP,Hyprland
@@ -124,11 +123,11 @@ in
 
        bind=SUPERSHIFT,RETURN,exec,'' + userSettings.term + " " + '' --class float_term
 
-       bind=SUPER,A,exec,'' + userSettings.spawnEditor + ''
+       bind=SUPER,A,exec,google-chrome-stable
 
-       bind=SUPER,S,exec,'' + userSettings.spawnBrowser + ''
+       bind=SUPER,S,exec,slack
 
-       bind=SUPERCTRL,S,exec,container-open # qutebrowser only
+       # bind=SUPERCTRL,S,exec,container-open # qutebrowser only
 
        bind=SUPERCTRL,P,pin
 
@@ -326,12 +325,12 @@ in
        bind=SUPERCTRL,R,exec,phoenix refresh
 
        # 3 monitor setup
-       monitor=eDP-1,1920x1080@300,900x1080,1
-       monitor=HDMI-A-1,2560x1080,1920x0,1
-       monitor=DP-1,1920x1080,0x0,1
+       monitor=HDMI-A-1,2560x1080,0x0,1
+       monitor=eDP-1,2560x1600@300,2560x0,1.6
+       # monitor=DP-1,1920x1080,0x0,1
 
        # hdmi tv
-       #monitor=eDP-1,1920x1080,1920x0,1
+       #monitor=eDP-1,1920x1080,x0,1
        #monitor=HDMI-A-1,1920x1080,0x0,1
 
        # hdmi work projector
@@ -361,7 +360,7 @@ in
          mouse_move_enables_dpms = true
          enable_swallow = true
          swallow_regex = (scratch_term)|(Alacritty)|(kitty)
-         font_family = '' + userSettings.font + ''
+         font_family = '' + userSettings.font + '' Mono
 
        }
        decoration {
@@ -656,7 +655,7 @@ in
       text = Hello, Antonio
       color = rgb(''+config.lib.stylix.colors.base07-rgb-r+'',''+config.lib.stylix.colors.base07-rgb-g+'', ''+config.lib.stylix.colors.base07-rgb-b+'')
       font_size = 25
-      font_family = ''+userSettings.font+''
+      font_family = ''+userSettings.font+'' Mono
 
       rotate = 0 # degrees, counter-clockwise
 
@@ -936,7 +935,7 @@ in
     style = ''
       * {
           /* `otf-font-awesome` is required to be installed for icons */
-          font-family: FontAwesome, ''+userSettings.font+'';
+          font-family: FontAwesome, ''+userSettings.font+'' Mono;
 
           font-size: 20px;
       }
@@ -1263,7 +1262,7 @@ in
   programs.fuzzel.package = pkgs.fuzzel;
   programs.fuzzel.settings = {
     main = {
-      font = userSettings.font + ":size=20";
+      font = userSettings.font + " Mono:size=20";
       dpi-aware = "no";
       show-actions = "yes";
       terminal = "${pkgs.alacritty}/bin/alacritty";

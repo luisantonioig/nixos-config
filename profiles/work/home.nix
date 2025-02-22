@@ -6,14 +6,13 @@
   home.username = userSettings.username;
   home.homeDirectory = "/home/"+userSettings.username;
 
-  programs.home-manager.enable = true;
-
   imports = [
               (./. + "../../../user/wm"+("/"+userSettings.wm+"/"+userSettings.wm)+".nix") # My window manager selected from flake
               ../../user/shell/sh.nix # My zsh and bash config
               ../../user/shell/cli-collection.nix # Useful CLI apps
               #../../user/app/doom-emacs/doom.nix # My doom emacs config
               ../../user/app/nvim/nvim.nix # My doom emacs config
+              ../../user/app/emacs/emacs.nix # My emacs configuration
               #../../user/app/emacsng # Me experimenting with emacsng and a vanilla config
               ../../user/app/ranger/ranger.nix # My ranger file manager config
               ../../user/app/git/git.nix # My git config
@@ -31,13 +30,22 @@
   home.stateVersion = "22.11"; # Please read the comment before changing.
 
   home.packages = (with pkgs; [
+    # TODO: Try fzf
     # Core
-    google-chrome
+    slack
     zsh
     alacritty
     brave
     qutebrowser
     git
+
+    # Programming
+    nodejs_22
+    vscode
+    typescript
+    typescript-language-server
+    # tree-sitter
+    # tree-sitter-grammars.tree-sitter-typescript
 
     # Office
     nextcloud-client
@@ -231,7 +239,7 @@
     EDITOR = userSettings.editor;
     SPAWNEDITOR = userSettings.spawnEditor;
     TERM = userSettings.term;
-    BROWSER = userSettings.browser;
+    BROWSER = "google-chrome";
   };
 
   news.display = "silent";

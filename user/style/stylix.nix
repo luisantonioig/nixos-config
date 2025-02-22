@@ -5,9 +5,10 @@ themePath = "../../../themes"+("/"+userSettings.theme+"/"+userSettings.theme)+".
 themePolarity = lib.removeSuffix "\n" (builtins.readFile (./. + "../../../themes"+("/"+userSettings.theme)+"/polarity.txt"));
 backgroundUrl = builtins.readFile (./. + "../../../themes"+("/"+userSettings.theme)+"/backgroundurl.txt");
 backgroundSha256 = builtins.readFile (./. + "../../../themes/"+("/"+userSettings.theme)+"/backgroundsha256.txt");
-myWallpaper = mkDerivation {
+myWallpaper = pkgs.stdenv.mkDerivation {
   name = "my-wallpaper";
-  src = ./background/jaguar_wallpaper.jpg;
+  src = ../../background/jaguar_wallpaper.jpg;
+  dontUnpack = true;
   installPhase = ''
     mkdir -p $out
     cp $src $out/fondo.jpg
