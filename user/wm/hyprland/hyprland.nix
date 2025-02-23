@@ -654,8 +654,8 @@ in
       monitor =
       text = Hello, Antonio
       color = rgb(''+config.lib.stylix.colors.base07-rgb-r+'',''+config.lib.stylix.colors.base07-rgb-g+'', ''+config.lib.stylix.colors.base07-rgb-b+'')
-      font_size = 25
-      font_family = ''+userSettings.font+'' Mono
+      font_size = 35
+      font_family = ''+userSettings.font+'' Mono Italic
 
       rotate = 0 # degrees, counter-clockwise
 

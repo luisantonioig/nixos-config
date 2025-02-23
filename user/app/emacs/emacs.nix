@@ -45,8 +45,6 @@
     (global-display-line-numbers-mode 1)
     (global-visual-line-mode t)
 
-    ;; TODO: Make treesitter and typescript to work
-
     ;; lsp-mode configuration
     (require 'lsp-mode)
     (add-hook 'typescript-mode-hook #'lsp)
@@ -63,56 +61,13 @@
       '((typescript-mode . typescript-ts-mode)
         (tsx-mode . tsx-ts-mode)))
 
-    ;; (add-to-list 'load-path "~/.emacs.d/site-lisp/typescript")
-
-    ;; (require 'typescript)
-
-    ;; (progn
-    ;;   ;; load elpa package system
-    ;;   ;; require emacs 24
-    ;;   (require 'package)
-    ;;   ;; Add MELPA repository.
-    ;;   (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
-
-    ;;   (when (< emacs-major-version 27) (package-initialize))
-    ;;   ;;
-    ;;   )
-
-    ;; (setq treesit-extra-load-path '("~/.emacs.d/tree-sitter/typescript"))
-
-    ;; (use-package treesit
-    ;;   :ensure nil ;; Viene con Emacs 29+
-    ;;   :config
-    ;;   (setq major-mode-remap-alist
-    ;;         '((typescript-mode . typescript-ts-mode)
-    ;;           (tsx-mode . tsx-ts-mode))))
-
-    ;; (use-package treesit-auto
-    ;;   :ensure t
-    ;;   :config
-    ;;   (global-treesit-auto-mode))
-    ;; (custom-set-variables
-    ;;  ;; custom-set-variables was added by Custom.
-    ;;  ;; If you edit it by hand, you could mess it up, so be careful.
-    ;;  ;; Your init file should contain only one such instance.
-    ;;  ;; If there is more than one, they won't work right.
-    ;;  '(package-selected-packages
-    ;;    '(dashboard typescript-mode web-mode company-quickhelp treesit-auto tree-sitter-langs tide rjsx-mode prettier-js nodejs-repl company)))
-    ;; (custom-set-faces
-    ;;  ;; custom-set-faces was added by Custom.
-    ;;  ;; If you edit it by hand, you could mess it up, so be careful.
-    ;;  ;; Your init file should contain only one such instance.
-    ;;  ;; If there is more than one, they won't work right.
-    ;;  )
-
     (add-hook 'json-mode-hook (lambda () (setq js-indent-level 2)))
     (setq js-indent-level 2)
 
-    ;; (add-to-list 'treesit-extra-load-path "~/.emacs.d/tree-sitter/")
 
     ;; TODO: make aiken-mode to work
-    ;; (use-package aiken-mode
-    ;;   :load-path "~/personal/aiken-mode/")
+    (use-package aiken-mode
+      :load-path "~/personal/aiken-mode/")
 
     (setq inhibit-startup-screen t)
     (setq initial-buffer-choice nil)

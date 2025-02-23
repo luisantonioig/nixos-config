@@ -162,6 +162,7 @@
             (./. + "/profiles" + ("/" + systemSettings.profile) + "/configuration.nix")
             inputs.lix-module.nixosModules.default
             ./system/bin/phoenix.nix
+            
           ]; # load configuration.nix from selected PROFILE
           specialArgs = {
             # pass config variables from above
@@ -257,6 +258,7 @@
     nix-straight.url = "github:librephoenix/nix-straight.el/pgtk-patch";
     nix-straight.flake = false;
     nix-doom-emacs.inputs.nix-straight.follows = "nix-straight";
+    aikenFlake.url = "github:luisantonioig/aiken";
 
     nvchad = {
       url = "github:NvChad/starter";

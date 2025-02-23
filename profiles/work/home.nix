@@ -1,4 +1,4 @@
-{ config, pkgs, pkgs-stable, pkgs-kdenlive, userSettings, ... }:
+{ config, inputs, pkgs, pkgs-stable, pkgs-kdenlive, userSettings, ... }:
 
 {
   # Home Manager needs a bit of information about you and the paths it should
@@ -31,6 +31,7 @@
 
   home.packages = (with pkgs; [
     # TODO: Try fzf
+    # TODO: watch the following video -> https://www.youtube.com/watch?v=mmqDYw9C30I&ab_channel=JoseanMartinez
     # Core
     slack
     zsh
@@ -44,9 +45,8 @@
     vscode
     typescript
     typescript-language-server
-    # tree-sitter
-    # tree-sitter-grammars.tree-sitter-typescript
-
+    (inputs.aikenFlake.packages.${pkgs.system}.aiken)
+    
     # Office
     nextcloud-client
     libreoffice-fresh
