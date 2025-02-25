@@ -22,6 +22,9 @@
     git
     syncthing
 
+    # Music
+    spotify
+
   ];
 
   xdg.enable = true;

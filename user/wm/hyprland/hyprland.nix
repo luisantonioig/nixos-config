@@ -126,6 +126,7 @@ in
        bind=SUPER,A,exec,google-chrome-stable
 
        bind=SUPER,S,exec,slack
+       bind=SUPER,M,exec,spotify
 
        # bind=SUPERCTRL,S,exec,container-open # qutebrowser only
 
@@ -207,8 +208,6 @@ in
        bind=SUPER,F,togglespecialworkspace,scratch_ranger
        bind=SUPER,N,exec,if hyprctl clients | grep scratch_numbat; then echo "scratch_ranger respawn not needed"; else alacritty --class scratch_numbat -e numbat; fi
        bind=SUPER,N,togglespecialworkspace,scratch_numbat
-       bind=SUPER,M,exec,if hyprctl clients | grep lollypop; then echo "scratch_ranger respawn not needed"; else lollypop; fi
-       bind=SUPER,M,togglespecialworkspace,scratch_music
        bind=SUPER,B,exec,if hyprctl clients | grep scratch_btm; then echo "scratch_ranger respawn not needed"; else alacritty --class scratch_btm -e btm; fi
        bind=SUPER,B,togglespecialworkspace,scratch_btm
        bind=SUPER,D,exec,if hyprctl clients | grep Element; then echo "scratch_ranger respawn not needed"; else element-desktop; fi
@@ -326,7 +325,7 @@ in
 
        # 3 monitor setup
        monitor=HDMI-A-1,2560x1080,0x0,1
-       monitor=eDP-1,2560x1600@300,2560x0,1.6
+       monitor=eDP-1,1920x1200@300,2560x0,2
        # monitor=DP-1,1920x1080,0x0,1
 
        # hdmi tv
