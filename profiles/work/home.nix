@@ -46,6 +46,7 @@
     typescript
     typescript-language-server
     (inputs.aikenFlake.packages.${pkgs.system}.aiken)
+    rust-analyzer
     
     # Office
     nextcloud-client

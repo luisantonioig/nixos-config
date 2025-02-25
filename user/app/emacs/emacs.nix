@@ -30,12 +30,16 @@
       # epkgs.tree-sitter-langs
       epkgs.treesit-grammars.with-all-grammars
       epkgs.treesit-auto
+      epkgs.rust-mode
     ];
   };
   
   home.file.".emacs".text = ''
     (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
     (load-theme 'elegant-black t)
+
+    ;; TODO: Quitar esto despues de provar las capacidades de aiken lsp
+    (setq lsp-log-io t)
 
     ;; Graphical user interface
     (menu-bar-mode -1)
@@ -97,6 +101,7 @@
       :ensure t
       :commands lsp-ui-mode)
 
+    
     ;; Configuration for dashboard
     (use-package dashboard
       :ensure t
@@ -106,10 +111,23 @@
                               (bookmarks . 5) ;; Mostrar 5 marcadores
                               (projects  . 5) ;; Mostrar 5 proyectos recientes
                               (agenda    . 5))) ;; Mostrar próximos eventos del calendario
+
       (setq dashboard-banner-logo-title "Bienvenido a Emacs 🚀")
       (setq dashboard-startup-banner 'official) ;; Usa el logo oficial de Emacs
+      (setq dashboard-center-content t) ;; Usa el logo oficial de Emacs
       (setq dashboard-set-heading-icons t) ;; Agrega iconos a las secciones
       (setq dashboard-set-file-icons t)) ;; Usa iconos en la lista de archivos recientes
+
+      ;; Configuration for projectile
+      (use-package projectile
+        :ensure t
+        :init
+        (setq projectile-project-search-path '("~/iog" "~/personal")) ;; Ajusta a tus rutas
+        :config
+        (projectile-mode +1)
+        (setq projectile-completion-system 'default)
+        (setq projectile-sort-order 'recentf) ;; Proyectos recientes primero
+        (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map))
       ;; Added from home.nix
   '';
 }
