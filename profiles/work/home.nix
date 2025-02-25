@@ -30,8 +30,14 @@
   home.stateVersion = "22.11"; # Please read the comment before changing.
 
   home.packages = (with pkgs; [
-    # TODO: Try fzf
-    # TODO: watch the following video -> https://www.youtube.com/watch?v=mmqDYw9C30I&ab_channel=JoseanMartinez
+    # DONE: watch the following video -> https://www.youtube.com/watch?v=mmqDYw9C30I&ab_channel=JoseanMartinez
+    # DONE: FZF
+    # TODO: The ** thing still does not work properly
+    # DONE: BAT
+    # TODO: DELTA?
+    # DONE: EZA
+    fzf
+    zoxide
     # Core
     slack
     zsh

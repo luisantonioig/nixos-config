@@ -3,7 +3,7 @@ let
 
   # My shell aliases
   myAliases = {
-    ls = "eza --icons --group-directories-first --git -l --color=never";
+    ls = "eza --icons --group-directories-first --git -l --color=always --no-time --no-user --no-permissions --no-filesize";
     cat = "bat";
     htop = "btm";
     fd = "fd -Lu";
@@ -11,6 +11,7 @@ let
     neofetch = "disfetch";
     fetch = "disfetch";
     gitfetch = "onefetch";
+    cd = "z";
     "," = "comma";
   };
 in
@@ -31,6 +32,8 @@ in
 
       bindkey '^P' history-beginning-search-backward
       bindkey '^N' history-beginning-search-forward
+      eval "$(fzf --zsh)"
+      eval "$(zoxide init zsh)"
     '';  
   };
 
