@@ -22,6 +22,7 @@
 
   # Configure xwayland
   services.xserver = {
+    videoDrivers = [ "nvidia" ];
     enable = true;
     xkb = {
       layout = "latam";
