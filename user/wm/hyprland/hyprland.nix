@@ -125,6 +125,7 @@ in
 
        bind=SUPER,A,exec,google-chrome-stable
 
+       bind=SUPER,E,exec,emacs
        bind=SUPER,S,exec,slack
        bind=SUPER,M,exec,spotify
 
