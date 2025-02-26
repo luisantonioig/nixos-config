@@ -12,6 +12,32 @@
 (global-display-line-numbers-mode 1)
 (global-visual-line-mode t)
 
+;; typescript-mode and tsx-mode configuration
+(use-package typescript-mode
+  :ensure t
+  :mode ("\\.ts\\'" "\\.tsx\\'"))
+
+;; TODO: What can I do with tree-sitter??
+;; tree-sitter-mode configuration
+;; (add-hook 'typescript-mode-hook #'tree-sitter-mode)
+;; (add-hook 'tsx-mode-hook #'tree-sitter-mode)
+;; (setq major-mode-remap-alist
+;;       '((typescript-mode . typescript-ts-mode)
+;;         (tsx-mode . tsx-ts-mode)))
+
+(use-package web-mode
+  :mode ("\\.js\\'" "\\.jsx\\'")
+  :config
+  (add-to-list 'auto-mode-alist '("\\.jsx?$" . web-mode)))
+
+(use-package lsp-mode
+  :hook ((typescript-mode . lsp))
+  :commands lsp
+  :config
+  (setq lsp-clients-typescript-init-options '(hostInfo "Emacs"))
+  (setq lsp-eslint-auto-fix-on-save t)
+  (setq lsp-disabled-clients '()))
+
 ;; lsp-mode configuration
 (require 'lsp-mode)
 (add-hook 'typescript-mode-hook #'lsp)
@@ -20,13 +46,6 @@
 ;; lsp-ui-mode configuration
 (require 'lsp-ui)
 (add-hook 'lsp-mode-hook #'lsp-ui-mode)
-
-;; tree-sitter-mode configuration
-(add-hook 'typescript-mode-hook #'tree-sitter-mode)
-(add-hook 'tsx-mode-hook #'tree-sitter-mode)
-(setq major-mode-remap-alist
-      '((typescript-mode . typescript-ts-mode)
-        (tsx-mode . tsx-ts-mode)))
 
 (add-hook 'json-mode-hook (lambda () (setq js-indent-level 2)))
 (setq js-indent-level 2)
@@ -86,10 +105,35 @@
   :ensure t
   :init
   (setq projectile-project-search-path '("~/iog" "~/personal")) ;; Ajusta a tus rutas
+  (setq projectule-auto-discover t)
+  (setq projectile-enable-caching t)
   :config
   (projectile-mode +1)
+  (setq projectile-switch-project-action #'projectile-dired)
+  (setq projectile-enable-caching t)
   (setq projectile-completion-system 'default)
-  (setq projectile-sort-order 'recentf) ;; Proyectos recientes primero
+  (setq projectile-sort-order 'recentf)
   (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map))
-;; Added from home.nix
-;; Added with source
+
+;; Search stack
+(use-package vertico
+  :ensure t
+  :init
+  (vertico-mode 1))
+
+(use-package orderless
+  :ensure t
+  :config
+  (setq completion-styles '(orderless)
+	completion-category-defaults nil
+	completion-category-overrides '((file (styles partial-completion)))))
+
+(use-package consult
+  :ensure t
+  :bind (("C-s" . consult-line)
+	("C-x b" . consult-buffer)
+	("M-y" . consult-yank-pop))
+  :init
+  (setq register-preview-delay 0.5
+	register-preview-function #'consult-register-preview)
+  :hook (completion-list-mode . consult-preview-at-point-mode))

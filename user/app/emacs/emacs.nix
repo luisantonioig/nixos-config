@@ -25,12 +25,20 @@
       epkgs.doom-modeline
       epkgs.nerd-icons
       epkgs.dashboard
+
       epkgs.typescript-mode
+      epkgs.web-mode
       epkgs.tree-sitter
       # epkgs.tree-sitter-langs
       epkgs.treesit-grammars.with-all-grammars
       epkgs.treesit-auto
       epkgs.rust-mode
+
+      #  Search stack
+      epkgs.vertico
+      epkgs.orderless
+      epkgs.consult
+      
     ];
   };
   home.file.".emacs".source = builtins.path {
