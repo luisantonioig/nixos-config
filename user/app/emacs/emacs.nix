@@ -5,6 +5,7 @@
   programs.emacs = {
     enable = true;
     package = pkgs.emacs29.override {
+    # package = pkgs.emacs29.override {
       withTreeSitter = true;
     };
     extraPackages = epkgs: [

@@ -32,9 +32,9 @@
   home.packages = (with pkgs; [
     # DONE: watch the following video -> https://www.youtube.com/watch?v=mmqDYw9C30I&ab_channel=JoseanMartinez
     # DONE: FZF
-    # TODO: The ** thing still does not work properly
+    # TODO @luisantonioig: The ** thing still does not work properly
     # DONE: BAT
-    # TODO: DELTA?
+    # TODO @luisantonioig: DELTA?
     # DONE: EZA
     fzf
     zoxide

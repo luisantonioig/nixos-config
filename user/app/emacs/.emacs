@@ -1,13 +1,18 @@
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
 (load-theme 'elegant-black t)
 
-;; TODO: Quitar esto despues de provar las capacidades de aiken lsp
+;; TODO @luisantonioig: Quitar esto despues de provar las capacidades de aiken lsp
 (setq lsp-log-io t)
 
 ;; Graphical user interface
 (menu-bar-mode -1)
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
+
+;; Disable intant-tabs-mode
+(setq-default indent-tabs-mode nil)
+(setq-default tab-width 2)
+
 
 (global-display-line-numbers-mode 1)
 (global-visual-line-mode t)
@@ -17,7 +22,7 @@
   :ensure t
   :mode ("\\.ts\\'" "\\.tsx\\'"))
 
-;; TODO: What can I do with tree-sitter??
+;; TODO @luisantonioig: What can I do with tree-sitter??
 ;; tree-sitter-mode configuration
 ;; (add-hook 'typescript-mode-hook #'tree-sitter-mode)
 ;; (add-hook 'tsx-mode-hook #'tree-sitter-mode)
@@ -27,6 +32,11 @@
 
 (use-package web-mode
   :mode ("\\.js\\'" "\\.jsx\\'")
+  :hook ((web-mode . (lambda ()
+                       (setq indent-tabs-mode nil)
+                       (setq web-mode-markup-indent-offset 2)
+                       (setq web-mode-css-indent-offset 2)
+                       (setq web-mode-code-indent-offset 2))))
   :config
   (add-to-list 'auto-mode-alist '("\\.jsx?$" . web-mode)))
 
@@ -51,7 +61,7 @@
 (setq js-indent-level 2)
 
 
-;; TODO: make aiken-mode to work
+;; TODO @luisantonioig: make aiken-mode to work
 (use-package aiken-mode
   :load-path "~/personal/aiken-mode/")
 
@@ -83,23 +93,6 @@
   :ensure t
   :commands lsp-ui-mode)
 
-
-;; Configuration for dashboard
-(use-package dashboard
-  :ensure t
-  :config
-  (dashboard-setup-startup-hook)
-  (setq dashboard-items '((recents  . 10) ;; Mostrar 10 archivos recientes
-                          (bookmarks . 5) ;; Mostrar 5 marcadores
-                          (projects  . 5) ;; Mostrar 5 proyectos recientes
-                          (agenda    . 5))) ;; Mostrar próximos eventos del calendario
-
-  (setq dashboard-banner-logo-title "Bienvenido a Emacs 🚀")
-  (setq dashboard-startup-banner 'official) ;; Usa el logo oficial de Emacs
-  (setq dashboard-center-content t) ;; Usa el logo oficial de Emacs
-  (setq dashboard-set-heading-icons t) ;; Agrega iconos a las secciones
-  (setq dashboard-set-file-icons t)) ;; Usa iconos en la lista de archivos recientes
-
 ;; Configuration for projectile
 (use-package projectile
   :ensure t
@@ -113,7 +106,24 @@
   (setq projectile-enable-caching t)
   (setq projectile-completion-system 'default)
   (setq projectile-sort-order 'recentf)
+  (setq projectile-generic-command "rg --files --hidden --glob '!**node_modules**'")
   (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map))
+
+;; Configuration for dashboard
+(use-package dashboard
+  :ensure t
+  :config
+  (dashboard-setup-startup-hook)
+  (setq dashboard-items '((recents  . 10) ;; Mostrar 10 archivos recientes
+                          (bookmarks . 5) ;; Mostrar 5 marcadores
+                          (projects  . 5) ;; Mostrar 5 proyectos recientes
+                          (agenda    . 5))) ;; Mostrar próximos eventos del calendario
+  (setq dashboard-projects-backend 'projectile)
+  (setq dashboard-banner-logo-title "Bienvenido a Emacs 🚀")
+  (setq dashboard-startup-banner 'official) ;; Usa el logo oficial de Emacs
+  (setq dashboard-center-content t) ;; Usa el logo oficial de Emacs
+  (setq dashboard-set-heading-icons t) ;; Agrega iconos a las secciones
+  (setq dashboard-set-file-icons t)) ;; Usa iconos en la lista de archivos recientes
 
 ;; Search stack
 (use-package vertico
