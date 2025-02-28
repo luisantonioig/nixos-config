@@ -79,6 +79,7 @@ in
       # INPUT (TECLADO Y RATÓN)
       # ========================
       input {
+          follow_mouse = 0
           kb_layout = latam
           kb_options = caps:escape
           repeat_delay = 350
@@ -102,19 +103,17 @@ in
       # ========================
       # ATALLOS DE TECLADO (CONCATENACIONES DE NIX MANTENIDAS)
       # ========================
-      bind=SUPER, Return, exec, '' + userSettings.term + ''
+      bind=ALT, TAB, cyclenext
+      bind=SUPER, Return, exec, kitty
       bind=SUPER, Q, killactive
       bind=SUPER, E, exec, emacs
-      bind=SUPER, M, exit
       bind=SUPER, Space, exec, rofi -show drun
       bind=SUPER, F, togglefloating
-      bind=SUPER, W, exec, google-chrome-stable
+      bind=SUPER, A, exec, google-chrome-stable
       bind=SUPER, S, exec, slack
       bind=SUPER, M, exec, spotify
       bind=SUPERSHIFT, Q, exit
-      bind=SUPER, T, exec, '' + userSettings.term + ''
-      bind=SUPERSHIFT, RETURN, exec, '' + userSettings.term + " " + '' --class float_term
-      
+
       # ========================
       # MOVERSE ENTRE VENTANAS
       # ========================
