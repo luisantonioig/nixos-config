@@ -147,3 +147,16 @@
   (setq register-preview-delay 0.5
 	register-preview-function #'consult-register-preview)
   :hook (completion-list-mode . consult-preview-at-point-mode))
+
+;; Command to assign tasks to myself
+(defun insert-todo-luisantonioig ()
+  "Inserts a TODO comment using the format of the current mode"
+  (interactive)
+  (let ((todo-text (concat (or comment-start "//") " TODO @luisantonioig:")))
+    (insert todo-text)))
+
+(global-set-key (kbd "C-c t") 'insert-todo-luisantonioig)
+
+;; magit projects same as projectile projects,
+(setq magit-repository-directories
+      (mapcar (lambda (dir) (cons dir 0)) projectile-known-projects))

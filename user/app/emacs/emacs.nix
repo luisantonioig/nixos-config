@@ -45,4 +45,7 @@
   home.file.".emacs".source = builtins.path {
     path = ./.emacs;
   };
+  home.file.".emacs.d/themes/elegant-black-theme.el".source = builtins.path {
+    path = ./elegant-black-theme.el;
+  };
 }
