@@ -13,6 +13,7 @@ let
     gitfetch = "onefetch";
     cd = "z";
     "," = "comma";
+    rb = "$HOME/personal/nixos-config/rebuild.sh";
   };
 in
 {
@@ -23,6 +24,8 @@ in
     enableCompletion = true;
     shellAliases = myAliases;
     initExtra = ''
+
+      
       PROMPT="%F{cyan}╭─%F{magenta}%n%f@%F{blue}%m%f %F{yellow}%~%f
       %F{cyan}╰─%F{green}❯%f "
 
