@@ -26,7 +26,7 @@
       ../../system/security/automount.nix
       ../../system/style/stylix.nix
     ];
-  harware.nvidia.open = false;
+  hardware.nvidia.open = false;
   # Fix nix path
   nix.nixPath = [ "nixpkgs=/nix/var/nix/profiles/per-user/root/channels/nixos"
                   "nixos-config=$HOME/dotfiles/system/configuration.nix"
